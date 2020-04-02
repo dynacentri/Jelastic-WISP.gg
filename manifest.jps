@@ -1,0 +1,55 @@
+{
+    "version": 0.99,
+    "type": "install",
+    "id": "wisp-node",
+    "name": "WISP.gg Node",
+    "description": "WISP.gg is a Software As A Service Game Panel with leading with features like Audit Logs, Backdoor Scanner, Mod Manager, Backups and more.",
+    "logo": "https://github.com/dynacentri/Jelastic-WISP.gg/raw/master/images/logo-white.wisp.gg.png",
+    "homepage": "https://wisp.gg/",
+    "categories": ["apps/entertainment"],
+    "settings": {
+        "fields": [
+            {
+                "hideLabel": false,
+                "hidden": false,
+                "type": "string",
+                "caption": "WISP License Key",
+                "name": "license_key",
+                "editable": false,
+                "required": true,
+                "tooltip": "<a target='_blank' href='https://wisp.gg/dashboard#/instances'>Find it here</a>"
+            },
+            {
+                "hideLabel": false,
+                "hidden": false,
+                "type": "string",
+                "caption": "WISP Instance URL",
+                "name": "instance_url",
+                "editable": false,
+                "required": true,
+                "tooltip": "<a target='_blank' href='https://wisp.gg/dashboard#/instances'>Find it here</a>"
+            }
+        ]
+    },
+    "nodes": [
+        {
+            "count": 1,
+            "fixedCloudlets": 1,
+            "cloudlets": 16,
+            "nodeGroup": "vps",
+            "nodeType": "ubuntu18-04",
+            "extip": false,
+            "displayName": "WISP.gg Node",
+            "volumes": "/home/wisp",
+            "startService": true
+        }
+    ],
+    "ssl": false,
+    "onInstall": [{
+        "cmd [vps]": "bash <(wget -qO- \"https://wisp.gg/install?license_key={$settings.license_key}&instance_url={$settings.instance_url}\")"
+    }],
+    "success": {
+        "text": "/text/success.md",
+        "email": "/text/success.md"
+    }
+}
