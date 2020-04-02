@@ -56,17 +56,8 @@
                 "commands": [
                     "apt install -y --no-install-recommends --no-install-suggests htop wget curl screen tmux",
                     "curl -sSL https://get.docker.com/ | sh",
-                    "systemctl enable docker"
-                ]
-            }
-        ],
-        "restartContainers": {
-            "nodeGroup": "vps"
-        },
-        "executeShellCommands": [
-            {
-                "nodeType": "ubuntu18",
-                "commands": [
+                    "systemctl enable docker",
+                    "sync;reboot",
                     "bash <(wget -qO- 'https://wisp.gg/install?license_key={$settings.license_key}&instance_url={$settings.instance_url}')"
                 ]
             }
