@@ -64,8 +64,8 @@
             {
                 "nodeType": "ubuntu18",
                 "commands": [
-                    "nohup curl -sSL https://raw.githubusercontent.com/dynacentri/Jelastic-WISP.gg/master/scripts/setup_docker.sh | /bin/bash",
-                    "nohup curl -sSL https://raw.githubusercontent.com/dynacentri/Jelastic-WISP.gg/master/scripts/setup_wisp.sh | /bin/bash -s '{$settings.license_key}' '{$settings.instance_domain}'"
+                    "curl -sSL https://raw.githubusercontent.com/dynacentri/Jelastic-WISP.gg/master/scripts/setup_docker.sh | sh",
+                    "curl -sSL https://raw.githubusercontent.com/dynacentri/Jelastic-WISP.gg/master/scripts/setup_wisp.sh | sh -s '{$settings.license_key}' '{$settings.instance_domain}'"
                 ]
             }
         ]
