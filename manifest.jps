@@ -15,27 +15,28 @@
     "targetRegions": {
         "type": "vz7"
     },
-    "env": {
-        "topology": {
-        "engine": "vps",
-        "nodes": [
-            {
-                "count": 1,
-                "fixedCloudlets": 1,
-                "cloudlets": 16,
-                "nodeGroup": "vps",
-                "nodeType": "ubuntu18",
-                "image": "jelastic/ubuntuvps",
-                "tag": "18.04",
-                "extip": true,
-                "displayName": "WISP.gg Node",
-                "startService": true
-            }
-        ],
-            "ssl": false,
-            "ha": false
+    "engine": "vps",
+    "nodes": [
+        {
+            "count": 1,
+            "fixedCloudlets": 1,
+            "cloudlets": 16,
+            "nodeGroup": "vps",
+            "nodeType": "ubuntu18",
+            "image": "jelastic/ubuntuvps",
+            "tag": "18.04",
+            "extip": true,
+            "displayName": "WISP.gg Node",
+            "startService": true,
+            "env": [
+                {
+                    "JELASTIC_PORTS": "7000-50000"
+                }
+            ]
         }
-    },
+    ],
+    "ssl": false,
+    "ha": false,
     "settings": {
         "fields": [
             {
