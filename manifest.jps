@@ -24,9 +24,9 @@
                 "hideLabel": false,
                 "hidden": false,
                 "type": "string",
-                "caption": "WISP Instance URL",
-                "default": "https://dynacentri.panel.gg",
-                "name": "instance_url",
+                "caption": "WISP Instance Domain",
+                "default": "dynacentri.panel.gg",
+                "name": "instance_domain",
                 "editable": false,
                 "required": true,
                 "tooltip": "<a target='_blank' href='https://wisp.gg/dashboard#/instances'>Find it here</a>"
@@ -54,11 +54,8 @@
             {
                 "nodeType": "ubuntu18",
                 "commands": [
-                    "apt install -y --no-install-recommends --no-install-suggests htop wget curl screen tmux",
-                    "curl -sSL https://get.docker.com/ | sh",
-                    "systemctl enable docker",
-                    "sync;reboot",
-                    "bash <(wget -qO- 'https://wisp.gg/install?license_key={$settings.license_key}&instance_url={$settings.instance_url}')"
+                    "nohup curl -sSL https://raw.githubusercontent.com/dynacentri/Jelastic-WISP.gg/master/scripts/setup_docker.sh | /bin/bash",
+                    "nohup curl -sSL https://raw.githubusercontent.com/dynacentri/Jelastic-WISP.gg/master/scripts/setup_wisp.sh | /bin/bash -s '{$settings.license_key}' '{$settings.instance_domain}'"
                 ]
             }
         ]
