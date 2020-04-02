@@ -29,9 +29,7 @@
                 "tag": "18.04",
                 "extip": true,
                 "displayName": "WISP.gg Node",
-                "startService": true,
-                "entrypoint": "/usr/local/bin/wisp tail",
-                "volumes": "/home/wisp"
+                "startService": true
             }
         ],
             "ssl": false,
