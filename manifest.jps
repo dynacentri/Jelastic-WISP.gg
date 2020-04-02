@@ -29,8 +29,9 @@
                 "tag": "18.04",
                 "extip": true,
                 "displayName": "WISP.gg Node",
-                "volumes": "/home/wisp",
-                "startService": true
+                "startService": true,
+                "entrypoint": "/usr/local/bin/wisp tail",
+                "volumes": "/home/wisp"
             }
         ],
             "ssl": false,
@@ -66,15 +67,12 @@
     "onInstall": [
         {
             "nodeType": "ubuntu18",
-            "cmd[vps]": [
+            "cmd [vps]": [
                 "curl -sSL https://get.docker.com/ | sh",
                 "systemctl enable docker",
                 "systemctl start docker",
-                "bash <(wget -qO- 'https://wisp.gg/install?license_key={$settings.license_key}&instance_url=https%3A%2F%2F{$settings.instance_domain}')"
-            ],
-            "restartContainers": {
-                "nodeGroup": "vps"
-            }
+                "bash <(wget -qO- 'https://wisp.gg/install?license_key=${settings.license_key}&instance_url=https%3A%2F%2F${settings.instance_domain}')"
+            ]
         }
     ],
     "success": {
