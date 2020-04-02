@@ -7,10 +7,14 @@
         "text": "WISP.gg is a Software As A Service Game Panel with leading with features like Audit Logs, Backdoor Scanner, Mod Manager, Backups and more."
     },
     "logo": "https://github.com/dynacentri/Jelastic-WISP.gg/raw/master/images/wsolo-01.png",
+    "startPage": "https://{$settings.instance_domain}",
     "homepage": "https://wisp.gg/",
     "categories": [
         "apps/entertainment"
     ],
+    "targetRegions": {
+        "type": "vz7"
+    },
     "env": {
         "topology": {
         "engine": "vps",
@@ -59,21 +63,22 @@
             }
         ]
     },
-    "onInstall": [{
-        "executeShellCommands": [
-            {
-                "nodeType": "ubuntu18",
-                "commands": [
-                    "tmux new -s install_scripts",
-                    "curl -sSL https://raw.githubusercontent.com/dynacentri/Jelastic-WISP.gg/master/scripts/setup_docker.sh | sh",
-                    "curl -sSL https://raw.githubusercontent.com/dynacentri/Jelastic-WISP.gg/master/scripts/setup_wisp.sh | sh -s '{$settings.license_key}' '{$settings.instance_domain}'",
-                    "tmux kill-session -t install_scripts"
-                ]
+    "onInstall": [
+        {
+            "nodeType": "ubuntu18",
+            "cmd[vps]": [
+                "curl -sSL https://get.docker.com/ | sh",
+                "systemctl enable docker",
+                "systemctl start docker",
+                "bash <(wget -qO- 'https://wisp.gg/install?license_key={$settings.license_key}&instance_url=https%3A%2F%2F{$settings.instance_domain}')"
+            ],
+            "restartContainers": {
+                "nodeGroup": "vps"
             }
-        ]
-    }],
+        }
+    ],
     "success": {
-        "text": "Your WISP.gg Node has been successfully installed.",
-        "email": "Your WISP.gg Node has been successfully installed."
+        "text": "Your WISP.gg Node has been successfully installed and depolyed.  Visit your WISP Game Panel to finish configuration.",
+        "email": "Your WISP.gg Node has been successfully installed and and depolyed. Visit your WISP Game Panel to finish configuration."
     }
 }
