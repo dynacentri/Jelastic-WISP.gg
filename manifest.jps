@@ -7,7 +7,7 @@
         "text": "WISP.gg is a Software As A Service Game Panel with leading with features like Audit Logs, Backdoor Scanner, Mod Manager, Backups and more."
     },
     "logo": "https://github.com/dynacentri/Jelastic-WISP.gg/raw/master/images/wsolo-01.png",
-    "startPage": "https://{$settings.instance_domain}",
+    "startPage": "https://${settings.instance_domain}",
     "homepage": "https://wisp.gg/",
     "categories": [
         "apps/entertainment"
