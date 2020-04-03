@@ -27,7 +27,10 @@
             "tag": "18.04",
             "extip": true,
             "displayName": "WISP.gg Node",
-            "startService": true
+            "startService": true,
+            "env": {
+                "JELASTIC_PORTS": "8080, 2022, 80, 443, 25565-25615, 27015-27065, 28015-28065"
+            }
         }
     ],
     "ssl": false,
