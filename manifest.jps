@@ -22,9 +22,9 @@
             "fixedCloudlets": 1,
             "cloudlets": 16,
             "nodeGroup": "vps",
-            "nodeType": "ubuntu18",
+            "nodeType": "ubuntu16",
             "image": "jelastic/ubuntuvps",
-            "tag": "18.04",
+            "tag": "16.04",
             "extip": true,
             "displayName": "WISP.gg Node",
             "startService": true,
@@ -63,7 +63,7 @@
     },
     "onInstall": [
         {
-            "nodeType": "ubuntu18",
+            "nodeType": "ubuntu16",
             "cmd [vps]": [
                 "curl -sSL https://get.docker.com/ | sh",
                 "systemctl enable docker",
