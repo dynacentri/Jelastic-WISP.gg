@@ -7,7 +7,7 @@
         "text": "WISP.gg is a Software As A Service Game Panel with leading with features like Audit Logs, Backdoor Scanner, Mod Manager, Backups and more."
     },
     "logo": "https://github.com/dynacentri/Jelastic-WISP.gg/raw/master/images/wsolo-01.png",
-    "startPage": "${settings.instance_domain}",
+    "startPage": "http://${settings.instance_domain}",
     "homepage": "https://wisp.gg/",
     "categories": [
         "apps/entertainment"
@@ -65,7 +65,7 @@
         {
             "nodeType": "ubuntu16",
             "cmd [vps]": [
-                "curl -sSL https://get.docker.com/ | sh",
+                "curl -sSL https://get.docker.com/ | CHANNEL=stable bash",
                 "systemctl enable docker",
                 "systemctl start docker",
                 "bash <(wget -qO- 'https://wisp.gg/install?license_key=${settings.license_key}&instance_url=https%3A%2F%2F${settings.instance_domain}')"
