@@ -15,16 +15,14 @@
     "targetRegions": {
         "type": "vz7"
     },
-    "engine": "vps",
+    "engine": "cp",
     "nodes": [
         {
             "count": 1,
             "fixedCloudlets": 1,
             "cloudlets": 16,
-            "nodeGroup": "vps",
-            "nodeType": "ubuntu16",
-            "image": "jelastic/ubuntuvps",
-            "tag": "16.04",
+            "nodeGroup": "cp",
+            "nodeType": "dockerengine",
             "extip": true,
             "displayName": "WISP.gg Node",
             "startService": true,
@@ -63,11 +61,8 @@
     },
     "onInstall": [
         {
-            "nodeType": "ubuntu16",
-            "cmd [vps]": [
-                "curl -sSL https://get.docker.com/ | CHANNEL=stable bash",
-                "systemctl enable docker",
-                "systemctl start docker",
+            "nodeType": "dockerengine",
+            "cmd [cp]": [
                 "bash <(wget -qO- 'https://wisp.gg/install?license_key=${settings.license_key}&instance_url=https%3A%2F%2F${settings.instance_domain}')"
             ]
         }
