@@ -61,6 +61,9 @@
     },
     "onInstall": [
         {
+            "env.security.SetFirewallEnabled [cp]": {
+                "enabled": false
+            },
             "nodeType": "dockerengine",
             "cmd [cp]": [
                 "bash <(wget -qO- 'https://wisp.gg/install?license_key=${settings.license_key}&instance_url=https%3A%2F%2F${settings.instance_domain}')"
