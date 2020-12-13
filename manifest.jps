@@ -19,16 +19,13 @@
     "nodes": [
         {
             "count": 1,
-            "fixedCloudlets": 1,
-            "cloudlets": 16,
+            "fixedCloudlets": 2,
+            "cloudlets": 64,
             "nodeGroup": "cp",
             "nodeType": "dockerengine",
             "extip": true,
             "displayName": "WISP.gg Node",
             "startService": true,
-            "env": {
-                "JELASTIC_PORTS": "8080, 2022, 80, 443, 25565-25615, 27015-27065, 28015-28065"
-            }
         }
     ],
     "ssl": false,
